@@ -4,12 +4,13 @@
   "description": "practicing creating a food app",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "parcel index.html",
+    "start": "parcel index.html --no-cache",
     "build": "parcel build index.html"
   },
   "author": "Bijay sah",
   "license": "ISC",
   "dependencies": {
+    "@parcel/watcher": "^2.6.0",
     "parcel": "^2.16.4",
     "react": "^19.2.8",
     "react-dom": "^19.2.8"

@@ -55,6 +55,7 @@ const RestaurantCard = () => {
       </div>
       <div className="restaurant-card-footer">
         <span className="text-title">36 minutes</span>
+        <span className="text-title">4.4 stars</span>
       </div>
     </div>
   );
@@ -65,6 +66,13 @@ const BodyComponent = () => {
     <div>
       <SearchBarContainer />
       <div className="card-space">
+        <RestaurantCard />
+        <RestaurantCard />
+        <RestaurantCard />
+        <RestaurantCard />
+        <RestaurantCard />
+        <RestaurantCard />
+        <RestaurantCard />
         <RestaurantCard />
       </div>
     </div>
