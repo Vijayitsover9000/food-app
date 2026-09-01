@@ -1,7 +1,9 @@
 import { useState } from "react";
-const SearchBarContainer = () => {
+const SearchBarContainer = ({handleSearch , handleReset}) => {
   const [searchValue, setSearchValue] = useState('');
-  console.log(searchValue);
+  const handleChange = (event) => {
+    setSearchValue(event.target.value);
+  }
   return (
     <div className="search-container">
       <input
@@ -9,12 +11,14 @@ const SearchBarContainer = () => {
         id="search"
         type="text"
         placeholder="Search for a Restaurant"
-        onChange={(e)=>{
-          setSearchValue(e.target.value)
-        }}
+        value={searchValue}
+        onChange={handleChange}
       />
-      <button className="search-button">
+      <button className="search-button" onClick={()=>handleSearch(searchValue)}>
         <span className="search-button-top">Search</span>
+      </button>
+      <button className="search-button" onClick={()=>handleReset()}>
+        <span className="search-button-top">Reset Filter</span>
       </button>
     </div>
   );
