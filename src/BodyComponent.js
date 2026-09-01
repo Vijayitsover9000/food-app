@@ -1,6 +1,7 @@
 import SearchBarContainer from "./SearchBarContainer";
 import RestaurantCard from "./RestaurantCard";
 import { MockRestaurants as restaurants } from "../utils/MockData";
+import Shimmer from "./Shimmer";
 import { useState, useEffect } from "react";
 
 const BodyComponent = () => {
@@ -39,9 +40,9 @@ const BodyComponent = () => {
         handleReset={handleReset}
       />
       <div className="card-space">
-        {data.map((res) => (
+        {data.length > 0 ? data.map((res) => (
           <RestaurantCard data={res} key={res?.id} />
-        ))}
+        )): <Shimmer/>}
       </div>
     </div>
   );
