@@ -1,7 +1,7 @@
 const RestaurantPage = () => {
     return (
         <div>
-            <h1>Restaurant Name</h1>
+            <h1>name</h1>
             <ul>
                 <li>Cost for two</li>
                 <li>Rating</li>

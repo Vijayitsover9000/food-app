@@ -7,6 +7,7 @@ import Contact from "./Pages/Contact";
 import RestaurantPage from "./Pages/RestaurantPage";
 import { createBrowserRouter, Outlet } from "react-router";
 import { RouterProvider } from "react-router";
+import loadRestaurantData from "../utils/loadRestaurantData";
 
 const AppComponent = () => (
   <>
@@ -29,6 +30,7 @@ const router = createBrowserRouter([
       {
         path: "/restaurant/:resId",
         Component: RestaurantPage,
+        loader: loadRestaurantData
       }
     ],
   },
