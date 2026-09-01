@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "@parcel/watcher": "^2.6.0",
+    "formik": "^2.4.9",
     "parcel": "^2.16.4",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",

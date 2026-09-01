@@ -14,6 +14,11 @@ const NavItemComponent = () => {
           Contact
         </Link>
       </div>
+      <div className="nav-item">
+        <Link to = '/login'>
+          Login
+        </Link>
+      </div>
     </div>
   );
 };
