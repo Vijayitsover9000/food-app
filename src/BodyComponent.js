@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 const BodyComponent = () => {
   const [data, setData] = useState([]);
   const [searchedRestaurants, setSearchedRestaurants] = useState([]);
+  const [topRestaurants, setTopRestaurants] = useState([]);
   const handleSearch = (name) => {
     const filteredData = data.filter((rest) =>
       rest?.name.toLowerCase().includes(name.toLowerCase()),
@@ -18,6 +19,11 @@ const BodyComponent = () => {
   };
   const handleReset = () => {
     setSearchedRestaurants([]);
+    setTopRestaurants([]);
+  };
+  const handleTopRestaurants = () => {
+    const topRes = data.filter((rest) => rest.avgRating >= 4.5);
+    setTopRestaurants(topRes);
   };
   useEffect(() => {
     fetchData();
@@ -45,12 +51,23 @@ const BodyComponent = () => {
       <SearchBarContainer
         handleSearch={handleSearch}
         handleReset={handleReset}
+        handleTopRestaurants={handleTopRestaurants}
       />
       <div className="card-space">
-        {searchedRestaurants.length >0 ?
+        {topRestaurants.length > 0 ? (
+          topRestaurants.map((res) => (
+            <RestaurantCard data={res} key={res?.id} />
+          ))
+        ) : (
+          <></>
+        )}
+        {searchedRestaurants.length > 0 ? (
           searchedRestaurants.map((res) => (
             <RestaurantCard data={res} key={res?.id} />
-          )):<></>}
+          ))
+        ) : (
+          <></>
+        )}
         {data?.length > 0 ? (
           data.map((res) => <RestaurantCard data={res} key={res?.id} />)
         ) : (

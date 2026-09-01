@@ -1,5 +1,5 @@
 import { useState } from "react";
-const SearchBarContainer = ({ handleSearch, handleReset }) => {
+const SearchBarContainer = ({ handleSearch, handleReset, handleTopRestaurants }) => {
   const [searchValue, setSearchValue] = useState("");
   const handleChange = (event) => {
     setSearchValue(event.target.value);
@@ -8,7 +8,7 @@ const SearchBarContainer = ({ handleSearch, handleReset }) => {
     <div className="search-container">
       <button
         className="search-button"
-        onClick={() => handleFilter(searchValue)}
+        onClick={() => handleTopRestaurants()}
       >
         <span className="search-button-top">Top Rated Restaurants</span>
       </button>
