@@ -1,10 +1,19 @@
+import { Link } from "react-router";
+
 const NavItemComponent = () => {
   return (
     <div className="nav-item-container">
-      <div className="nav-item">Home</div>
-      <div className="nav-item">About Us</div>
-      <div className="nav-item">Contact</div>
-      <div className="nav-item">Email</div>
+      <div className="nav-item"><Link to='/'>Home</Link></div>
+      <div className="nav-item">
+        <Link to={'/about'}>
+        About Us
+        </Link>
+      </div>
+      <div className="nav-item">
+        <Link to = '/contact'>
+          Contact
+        </Link>
+      </div>
     </div>
   );
 };
