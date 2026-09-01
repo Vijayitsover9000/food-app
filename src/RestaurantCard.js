@@ -1,20 +1,30 @@
-const RestaurantCard = () => {
+import {CARD_IMG_BASE_CDN_URL} from '../utils/common.js';
+
+const RestaurantCard = ({ data }) => {
+  const {
+    name,
+    cuisines,
+    avgRatingString,
+    cloudinaryImageId,
+    costForTwo,
+    sla
+  } = data;
   return (
     <div className="restaurant-card">
       <div className="restaurant-card-img">
         <img
           id='restaurant-card-img-img'
-          src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/0ef28e1afd908733eebe5f92bde73063"
+          src={CARD_IMG_BASE_CDN_URL + cloudinaryImageId}
           alt="some food image"
         />
       </div>
       <div className="restaurant-card-info">
-        <p className="restaurant-text-title">Meghana Foods </p>
-        <p className="restaurant-text-body">Biriyani, North Indian</p>
+        <p className="restaurant-text-title">{name} </p>
+        <p className="restaurant-text-body">{cuisines.join(",")}</p>
       </div>
       <div className="restaurant-card-footer">
-        <span className="text-title">36 minutes</span>
-        <span className="text-title">4.4 stars</span>
+        <span className="text-title">{sla.slaString}</span>
+        <span className="text-title">{avgRatingString + " stars"}</span>
       </div>
     </div>
   );
