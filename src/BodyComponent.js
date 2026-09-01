@@ -3,6 +3,7 @@ import RestaurantCard from "./RestaurantCard";
 import { MockRestaurants as restaurants } from "../utils/MockData";
 import Shimmer from "./Shimmer";
 import { useState, useEffect } from "react";
+import { CORSPROXY } from "../utils/common";
 
 const BodyComponent = () => {
   const [data, setData] = useState([]);
@@ -29,8 +30,10 @@ const BodyComponent = () => {
     fetchData();
   }, []);
   const fetchData = async () => {
+    const targetURL =
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=27.32220&lng=88.61440&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING";
     const swiggyData = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=27.32220&lng=88.61440&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING",
+      `${CORSPROXY}?url=${encodeURIComponent(targetURL)}`,
     );
     const json = await swiggyData.json();
     let resList = [];
@@ -44,6 +47,16 @@ const BodyComponent = () => {
       });
     });
     setData(resList);
+  };
+  const loadMoreRestaurants = async () => {
+    const updateURL = "https://www.swiggy.com/dapi/restaurants/list/update";
+    const swiggyMoreRes = await fetch(
+      `https://corsproxy.io/?url=${encodeURIComponent(updateURL)}`,
+      {
+        method: "POST",
+      },
+    );
+    console.log();
   };
   console.log("body rendered");
   return (
