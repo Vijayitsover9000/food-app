@@ -3,12 +3,13 @@ import {CARD_IMG_BASE_CDN_URL} from '../utils/common.js';
 const RestaurantCard = ({ data }) => {
   const {
     name,
-    cuisines,
-    avgRatingString,
     cloudinaryImageId,
-    costForTwo,
-    sla
+    cuisines,
+    sla,
+    avgRatingString
+
   } = data;
+  console.log("DATA IS ",data);
   return (
     <div className="restaurant-card">
       <div className="restaurant-card-img">
