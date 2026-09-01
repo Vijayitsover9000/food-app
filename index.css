@@ -133,4 +133,5 @@ body{
 .card-space{
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
 }
