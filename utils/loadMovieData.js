@@ -8,19 +8,20 @@ const options = {
 };
 
 const loadMovieData = async () => {
-  let movies = [];
-  MovieLists.map(async (movieCategory) => {
+  const fetchMovieData = async (movieCategory) => {
     const url_movie = TMDB_BASE_URL + "movie/" + movieCategory.id;
     const response = await fetch(url_movie, { ...options });
     const data = await response.json();
-    const final_data = {
+    const final_data =  {
       ...data,
       id: movieCategory.id,
       name: movieCategory.name,
     };
-    movies.push(final_data);
-  });
-
+    return final_data;
+  };
+  const moviePromises = MovieLists.map(fetchMovieData);
+  const movies = await Promise.all(moviePromises);
+  console.log("Final movies:", movies);
   return movies;
 };
 

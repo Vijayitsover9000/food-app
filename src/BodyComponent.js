@@ -48,7 +48,6 @@ const BodyComponent = () => {
     });
     setData(resList);
   };
-  console.log("body rendered");
   return (
     <div>
       <SearchBarContainer
