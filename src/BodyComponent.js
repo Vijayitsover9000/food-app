@@ -6,33 +6,40 @@ import { useState, useEffect } from "react";
 
 const BodyComponent = () => {
   const [data, setData] = useState([]);
+  const [searchedRestaurants, setSearchedRestaurants] = useState([]);
   const handleSearch = (name) => {
-    const filteredData = data.filter(
-      (rest) => rest?.info?.name.toLowerCase() === name.toLowerCase(),
+    const filteredData = data.filter((rest) =>
+      rest?.name.toLowerCase().includes(name.toLowerCase()),
     );
     if (filteredData.length <= 0) {
-      setData(restaurants);
+      setSearchedRestaurants([]);
       alert("No results");
-    } else setData(filteredData);
+    } else setSearchedRestaurants(filteredData);
   };
-  const handleReset = ()=> {
-    setData(restaurants);
-  }
+  const handleReset = () => {
+    setSearchedRestaurants([]);
+  };
   useEffect(() => {
     fetchData();
-  },[]);
+  }, []);
   const fetchData = async () => {
-    const swiggyData= await fetch('https://www.swiggy.com/dapi/restaurants/list/v5?lat=27.32220&lng=88.61440&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING');
+    const swiggyData = await fetch(
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=27.32220&lng=88.61440&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING",
+    );
     const json = await swiggyData.json();
     let resList = [];
-    json?.data?.cards?.forEach((card)=>{
-      const moreRes = card?.card?.card?.gridElements?.infoWithStyle?.restaurants;
-      moreRes?.forEach((res)=>{
-        resList.push(res?.info);
+    // yeah complicated logic here
+    json?.data?.cards?.forEach((card) => {
+      const moreRes =
+        card?.card?.card?.gridElements?.infoWithStyle?.restaurants;
+      moreRes?.forEach((res) => {
+        if (!resList.some((listRes) => listRes?.id === res?.info?.id))
+          resList.push(res?.info);
       });
     });
     setData(resList);
-  }
+  };
+  console.log("body rendered");
   return (
     <div>
       <SearchBarContainer
@@ -40,9 +47,15 @@ const BodyComponent = () => {
         handleReset={handleReset}
       />
       <div className="card-space">
-        {data.length > 0 ? data.map((res) => (
-          <RestaurantCard data={res} key={res?.id} />
-        )): <Shimmer/>}
+        {searchedRestaurants.length >0 ?
+          searchedRestaurants.map((res) => (
+            <RestaurantCard data={res} key={res?.id} />
+          )):<></>}
+        {data?.length > 0 ? (
+          data.map((res) => <RestaurantCard data={res} key={res?.id} />)
+        ) : (
+          <Shimmer />
+        )}
       </div>
     </div>
   );

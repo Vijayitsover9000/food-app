@@ -6,6 +6,12 @@ const SearchBarContainer = ({ handleSearch, handleReset }) => {
   };
   return (
     <div className="search-container">
+      <button
+        className="search-button"
+        onClick={() => handleFilter(searchValue)}
+      >
+        <span className="search-button-top">Top Rated Restaurants</span>
+      </button>
       <input
         className="search-input-box"
         id="search"

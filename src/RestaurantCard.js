@@ -7,9 +7,7 @@ const RestaurantCard = ({ data }) => {
     cuisines,
     sla,
     avgRatingString
-
   } = data;
-  console.log("DATA IS ",data);
   return (
     <div className="restaurant-card">
       <div className="restaurant-card-img">
@@ -21,10 +19,10 @@ const RestaurantCard = ({ data }) => {
       </div>
       <div className="restaurant-card-info">
         <p className="restaurant-text-title">{name} </p>
-        <p className="restaurant-text-body">{cuisines.join(",")}</p>
+        <p className="restaurant-text-body">{cuisines?.join(",")}</p>
       </div>
       <div className="restaurant-card-footer">
-        <span className="text-title">{sla.slaString}</span>
+        <span className="text-title">{sla?.slaString}</span>
         <span className="text-title">{avgRatingString + " stars"}</span>
       </div>
     </div>
