@@ -2,10 +2,13 @@
   "name": "food_app",
   "version": "1.0.0",
   "description": "practicing creating a food app",
+  "homepage": "https://Vijayitsover9000.github.io/food-app",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "parcel index.html --no-cache",
-    "build": "parcel build index.html"
+    "build": "parcel build index.html --public-url ./",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "author": "Bijay sah",
   "license": "ISC",
@@ -18,6 +21,7 @@
     "react-router": "^7.18.2"
   },
   "devDependencies": {
+    "gh-pages": "^6.3.0",
     "process": "^0.11.10"
   }
 }
