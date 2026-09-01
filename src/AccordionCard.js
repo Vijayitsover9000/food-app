@@ -5,8 +5,8 @@ const MovieCard = ({ movies }) => {
     <div>
       <ul>
         {movies.map((movie) => (
-          <li key={movie.id}>
-            <h3>{movie.title}</h3>
+          <li key={movie?.id}>
+            <h3>{movie?.title}</h3>
             <img src={TMDB_SECURE_IMG_BASE_URL+'w500'+movie.backdrop_path}/>
             </li>
         ))}

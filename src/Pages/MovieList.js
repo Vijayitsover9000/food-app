@@ -1,4 +1,4 @@
-import useMovies from "../../utils/useMovies";
+// import useMovies from "../../utils/useMovies";
 import AccordionCard from "../AccordionCard";
 import { useLoaderData } from "react-router";
 
@@ -13,8 +13,8 @@ const MovieList = () => {
       <h2>So Here's an accordion example using tmdb movie lists</h2>
 
       <ul>
-        {movieCategories.map((movieCategorty) => (
-          <AccordionCard key={movieCategorty.id} name={movieCategorty.name} movies={movieCategorty.results}/>
+        {movieCategories?.map((movieCategorty) => (
+          <AccordionCard key={movieCategorty?.id} name={movieCategorty?.name} movies={movieCategorty?.results}/>
         ))}
       </ul>
     </div>

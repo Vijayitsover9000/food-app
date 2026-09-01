@@ -31,7 +31,7 @@ const router = createBrowserRouter([
       { path: "contact", Component: Contact },
       { path: "login", Component: Login },
       {
-        path: "/restaurant/:resId",
+        path: "/movies",
         Component: MovieList,
         loader: loadMovieData,
       }

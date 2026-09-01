@@ -5,7 +5,7 @@ const RestaurantCard = ({ data }) => {
   const { id, name, cloudinaryImageId, cuisines, sla, avgRatingString } = data;
   return (
     <div className="restaurant-card">
-      <Link to={`/restaurant/${id}`}>
+      <Link to={`/movies`}>
         <div className="restaurant-card-img">
           <img
             id="restaurant-card-img-img"
