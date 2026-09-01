@@ -1,6 +1,6 @@
 import SearchBarContainer from "./SearchBarContainer";
 import RestaurantCard from "./RestaurantCard";
-import { MockRestaurants as restaurants } from "../utils/MockData";
+// import { MockRestaurants as restaurants } from "../utils/MockData";
 import Shimmer from "./Shimmer";
 import { useState, useEffect } from "react";
 import { CORSPROXY } from "../utils/common";
@@ -47,16 +47,6 @@ const BodyComponent = () => {
       });
     });
     setData(resList);
-  };
-  const loadMoreRestaurants = async () => {
-    const updateURL = "https://www.swiggy.com/dapi/restaurants/list/update";
-    const swiggyMoreRes = await fetch(
-      `https://corsproxy.io/?url=${encodeURIComponent(updateURL)}`,
-      {
-        method: "POST",
-      },
-    );
-    console.log();
   };
   console.log("body rendered");
   return (

@@ -9,3 +9,28 @@ export const SWIGGY_ALL_RESTAURANTS_BASE_URL =
 
 export const RESTAURANT_BASE_URL =
   "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=27.32220&lng=88.61440&restaurantId=";
+
+
+export const TMDB_BASE_URL = 'https://api.themoviedb.org/3/'
+
+export const TMDB_SECURE_IMG_BASE_URL =  "https://image.tmdb.org/t/p/"
+
+
+export const MovieLists = [
+  {
+    name: "Now Playing",
+    id: "now_playing",
+  },
+  {
+    name: "Popular",
+    id: "popular",
+  },
+  {
+    name: "Top Rated",
+    id: "top_rated",
+  },
+  {
+    name: "Upcoming",
+    id: "upcoming",
+  },
+];
